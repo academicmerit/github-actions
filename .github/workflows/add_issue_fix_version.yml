@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: '16'
       - run: npm install @actions/github @actions/core node-fetch
-      - uses: academicmerit/github-actions/.github/actions/add_fix_version
+      - uses: academicmerit/github-actions/add_fix_version@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
