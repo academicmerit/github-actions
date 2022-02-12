@@ -70,7 +70,7 @@ const updateIssueFixVersion = async (issueKey, fixVersions) => {
 
 const getCurrentStandardRelease = (releases) => {
   const currentStandardRelease = releases.find(({ name }) => /^release.*.0$/i.test(name))
-  return currentStandardRelease.name
+  return currentStandardRelease && currentStandardRelease.name
 }
 
 const getIssuesFromCommits = (commits) => {
