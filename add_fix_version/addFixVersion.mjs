@@ -81,7 +81,7 @@ const getIssuesFromCommits = (commits) => {
       issues.push(...matches)
     }
   })
-  return Array.from(new Set(issues))
+  return Array.from(new Set(issues), issue => issue.toUpperCase())
 }
 
 const run = async () => {
@@ -93,6 +93,10 @@ const run = async () => {
     actionBranch : (await getBranch('release-candidate') || await getBranch(currentStandardRelease));
   const commits = github.context.payload.commits
   const issues = getIssuesFromCommits(commits)
+
+  if (!issues.length) {
+    return undefined;
+  }
 
   if (actionBranch === 'master' && !releaseBranch) {
     return await Promise.all(issues.map((issue) =>
