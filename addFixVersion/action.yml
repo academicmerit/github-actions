@@ -2,5 +2,4 @@ name: 'add_fix_version'
 description: 'Add fix version to associated JIRA issue'
 runs:
   using: 'node16'
-  pre: npm install @actions/github @actions/core node-fetch
-  main: 'addFixVersion.mjs'
+  main: 'dist/index.js'

@@ -10,11 +10,7 @@ jobs:
   add_fix_version_to_issue:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - run: npm install @actions/github @actions/core node-fetch
-      - uses: academicmerit/github-actions/add_fix_version@main
+      - uses: academicmerit/github-actions/addFixVersion@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
