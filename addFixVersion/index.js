@@ -94,6 +94,8 @@ const run = async () => {
     actionBranch : (await getBranch('release-candidate') || releaseVersion && await getBranch(`release-${releaseVersion}`));
   const commits = github.context.payload.commits
   const issues = getIssuesFromCommits(commits)
+  console.log('releaseVersion', releaseVersion);
+  console.log('releaseBranch', releaseBranch);
 
   if (!issues.length) {
     return undefined;
