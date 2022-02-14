@@ -89,8 +89,9 @@ const run = async () => {
   const releaseNextVersion = 'Release Next';
   const currentStandardRelease = getCurrentStandardRelease(releaseVersions) || releaseNextVersion;
   const actionBranch = process.env.GITHUB_REF_NAME;
+  const releaseVersion = currentStandardRelease.match(/(\d+\.?){3}/g)?.[0];
   const releaseBranch = actionBranch.startsWith("release-") ?
-    actionBranch : (await getBranch('release-candidate') || await getBranch(currentStandardRelease));
+    actionBranch : (await getBranch('release-candidate') || releaseVersion && await getBranch(`release-${releaseVersion}`));
   const commits = github.context.payload.commits
   const issues = getIssuesFromCommits(commits)
 
